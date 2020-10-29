@@ -9,7 +9,6 @@
  *
  */
 const express = require('express');
-const { characterRouter } = require('./controllers/character');
 const app = express()
 require('dotenv').config()
 
