@@ -8,7 +8,8 @@
  * Import needed packages
  *
  */
-const express = require('express')
+const express = require('express');
+const { characterRouter } = require('./controllers/character');
 const app = express()
 require('dotenv').config()
 
@@ -16,7 +17,9 @@ require('dotenv').config()
  * 
  * import routers from controllers/
  *
- *
+ */
+const { characterRouter } = require('./controllers/character.js')
+
 
 /* Step 3
  *
@@ -53,7 +56,7 @@ app.use(express.static(`${__dirname}/client/build`))
  * add router for the application to use. The first argument is a prefix to all
  * the paths defined in the router.
  */
-
+app.use('/api/v1/character', characterRouter)
 
 
 /* Step 5
@@ -77,9 +80,9 @@ const PORT = process.env.PORT || 3002
  *
  * Start the server
  */
-app.use((req, res, next) => {
-    res.send('Welcome to Express');
-});
+// app.use((req, res, next) => {
+//     res.send('Welcome to Express');
+// });
 
 app.listen(PORT, () => {
     console.log(`App is listening on PORT ${PORT}`)
