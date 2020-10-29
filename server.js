@@ -22,6 +22,11 @@ require('dotenv').config()
  *
  * Register middleware...
  */
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 /* Step 3.a
  * ...to parse the body of the HTTP requests from a URL encoded string 
@@ -72,6 +77,10 @@ const PORT = process.env.PORT || 3002
  *
  * Start the server
  */
+app.use((req, res, next) => {
+    res.send('Welcome to Express');
+});
+
 app.listen(PORT, () => {
     console.log(`App is listening on PORT ${PORT}`)
 })
