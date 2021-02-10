@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css'
 import Homepage from './components/Homepage.jsx'
+import Characters from './components/Characters.jsx'
 
 
 class App extends Component {
@@ -22,6 +24,14 @@ class App extends Component {
 
           </nav>
         </div>
+        <Router>
+          <div className="Routes">
+            <Switch>
+              <Route exact path='/' component={Homepage} />
+              <Route exact path='/characters' component={Characters} />
+            </Switch>
+          </div>
+        </Router>
       </div>
     )
   }
