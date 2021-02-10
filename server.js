@@ -8,7 +8,7 @@
  * Import needed packages
  *
  */
-const express = require('express')
+const express = require('express');
 const app = express()
 require('dotenv').config()
 
@@ -16,12 +16,19 @@ require('dotenv').config()
  * 
  * import routers from controllers/
  *
- *
+ */
+const { characterRouter } = require('./controllers/character.js')
+
 
 /* Step 3
  *
  * Register middleware...
  */
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 /* Step 3.a
  * ...to parse the body of the HTTP requests from a URL encoded string 
@@ -48,7 +55,7 @@ app.use(express.static(`${__dirname}/client/build`))
  * add router for the application to use. The first argument is a prefix to all
  * the paths defined in the router.
  */
-
+app.use('/api/v1/character', characterRouter)
 
 
 /* Step 5
@@ -72,6 +79,10 @@ const PORT = process.env.PORT || 3002
  *
  * Start the server
  */
+// app.use((req, res, next) => {
+//     res.send('Welcome to Express');
+// });
+
 app.listen(PORT, () => {
     console.log(`App is listening on PORT ${PORT}`)
 })
