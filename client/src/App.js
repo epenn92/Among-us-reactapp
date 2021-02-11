@@ -4,38 +4,69 @@ import './App.css'
 import Homepage from './components/Homepage.jsx'
 import Characters from './components/Characters.jsx'
 
+function App() {
+  return (
+    <div className='App'>
 
-class App extends Component {
-  render() {
-    return (
-      <div className='App'>
+      <nav className='navBar'>
+        <ul className='navBarOptions'>
 
-        <nav className='navBar'>
-          <ul className='navBarOptions'>
+          <li>Home</li>
+          <li>Characters</li>
+          <li>Test change to webserver</li>
 
-            <li>Home</li>
-            <li>Characters</li>
 
-          </ul>
+        </ul>
+      </nav>
+
+      <div className='footer'>
+        <nav>
+
         </nav>
-
-        <div className='footer'>
-          <nav>
-
-          </nav>
-        </div>
-        <Router>
-          <div className="Routes">
-            <Switch>
-              <Route exact path='/' component={Homepage} />
-              <Route exact path='/characters' component={Characters} />
-            </Switch>
-          </div>
-        </Router>
       </div>
-    )
-  }
+      <Router>
+        <div className="Routes">
+          <Switch>
+            <Route exact path='/' component={Homepage} />
+            <Route exact path='/characters' component={Characters} />
+          </Switch>
+        </div>
+      </Router>
+    </div>
+  )
 }
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <div className='App'>
+
+//         <nav className='navBar'>
+//           <ul className='navBarOptions'>
+
+//             <li>Home</li>
+//             <li>Characters</li>
+
+//           </ul>
+//         </nav>
+
+//         <div className='footer'>
+//           <nav>
+
+//           </nav>
+//         </div>
+//         <Router>
+//           <div className="Routes">
+//             <Switch>
+//               <Route exact path='/' component={Homepage} />
+//               <Route exact path='/characters' component={Characters} />
+//             </Switch>
+//           </div>
+//         </Router>
+//       </div>
+//     )
+//   }
+// }
 
 
 
