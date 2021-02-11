@@ -14,6 +14,7 @@ function App() {
           <li>Home</li>
           <li>Characters</li>
           <li>Test change to webserver</li>
+          <li>test2</li>
 
 
         </ul>
