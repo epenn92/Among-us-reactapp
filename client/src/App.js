@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css'
 import Homepage from './components/Homepage.jsx'
 import Characters from './components/Characters.jsx'
 
-function App() {
+const App = () => {
   return (
+
     <div className='App'>
 
       <nav className='navBar'>
@@ -13,8 +14,7 @@ function App() {
 
           <li>Home</li>
           <li>Characters</li>
-          <li>Test change to webserver: Git Hook3</li>
-          <li>test2</li>
+          <p>end of navbar</p>
 
 
 
@@ -29,14 +29,16 @@ function App() {
       <Router>
         <div className="Routes">
           <Switch>
+            {/* how to pass props to react router components */}
             <Route exact path='/' component={Homepage} />
-            <Route exact path='/characters' component={Characters} />
+            <Route exact path='/characters' render={() => <Characters name='propTest' />} />
           </Switch>
         </div>
       </Router>
     </div>
   )
 }
+
 
 // class App extends Component {
 //   render() {
