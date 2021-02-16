@@ -1,10 +1,30 @@
 import React from 'react'
+import axios from 'axios'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css'
+import { useState, useEffect, useRef } from 'react'
 import Homepage from './components/Homepage.jsx'
 import Characters from './components/Characters.jsx'
 
 const App = () => {
+  //default state and updated state, state is immutable so use setCrew to remake/change state
+
+
+  const [chars, setCrew] = useState([
+  ])
+  useEffect(() => {
+    axios.get('/api/v1/character')
+      .then((res) => {
+        setCrew({ chars: res.data })
+      })
+  })
+  // console.log(chars)
+
+  //Delete character
+  const deleteTask = (id) => {
+
+  }
+
   return (
 
     <div className='App'>
@@ -31,7 +51,9 @@ const App = () => {
           <Switch>
             {/* how to pass props to react router components */}
             <Route exact path='/' component={Homepage} />
-            <Route exact path='/characters' render={() => <Characters name='propTest' />} />
+            <Route exact path='/characters'
+              render={() => <Characters chars={chars} />}
+            />
           </Switch>
         </div>
       </Router>

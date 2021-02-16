@@ -2,7 +2,7 @@ const mongoose = require('./connection.js')
 
 const CharacterSchema = new mongoose.Schema({
     name: String,
-    description: String,
+    color: String,
     image: String,
     impostor: Boolean
 })

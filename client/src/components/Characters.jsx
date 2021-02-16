@@ -1,12 +1,21 @@
+import Character from './Character.jsx'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const Characters = ({ name }) => {
+
+
+
+const Characters = ( { chars } ) => {
+
     return (
         <div>
             <header>
-                <h1>{name}</h1>
-                <h2>hi</h2>
+                <h1>Our Characters</h1>
+        
+            {chars.map((crew) => (
+                <Character key={crew.id} crew={crew} />
+            ))}
+            
             </header>
         </div>
     )
@@ -16,10 +25,10 @@ const Characters = ({ name }) => {
 //     name: 'propTest',
 // }
 
-Characters.propTypes = {
-    name: PropTypes.string.isRequired,
+// Characters.propTypes = {
+//     name: PropTypes.string.isRequired,
 
-}
+// }
 
 // export default class Characters extends Component {
     
