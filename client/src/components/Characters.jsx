@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Character from './Character.jsx'
+
 
 
 
@@ -11,18 +11,21 @@ const Characters = ( { chars } ) => {
         <div>
             <header>
                 <h1>Our Characters</h1>
-                <li>{chars.map(e => (
+                <ol>{chars.map(e => (
                     <Link to={`/character/${e._id}`} key={e._id}>
                         <h3>
                     {e.name}
                     </h3></Link>
-                ))}</li>
+                ))}</ol>
+
 
                 
 
                 
             
             </header>
+            <Link to={'/character/new'}><button>Add new Character</button></Link>
+            
         </div>
     )
 }

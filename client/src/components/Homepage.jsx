@@ -11,7 +11,7 @@ const Homepage = () => {
         <div className="Homepage">
                 <h1 className="main">Among Us App</h1>
                 <p>This app is to show appreciation for the game Among Us which has skyrocketed in popularity after streamers played the PC version. There's currently tournaments and events for the game and it's extremely fun to play.</p>
-                <Link to="/characters"><Button color='cyan' text='Characters' onClick={onClick} /></Link>
+                <Link to="/character"><Button color='cyan' text='Characters' onClick={onClick} /></Link>
             </div>
     )
 }

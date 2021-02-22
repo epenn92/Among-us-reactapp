@@ -1,11 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './App.css'
 import { useState, useEffect, useRef } from 'react'
 import Homepage from './components/Homepage.jsx'
 import Characters from './components/Characters.jsx'
 import Character from './components/Character.jsx'
+import NewCharacter from './components/NewCharacter.jsx'
 
 const App = () => {
 
@@ -22,11 +24,14 @@ const App = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [chars]);
 
-  const showChar = (id) = {
+  // const [newChar, setNewChar] = useState([])
 
-  }
+
+  // const showChar = (id) = {
+
+  // }
 
   // const [char, setChar] = useState([]);
   // useEffect(() => {
@@ -49,9 +54,9 @@ const App = () => {
   //         })
   // }
   //Delete character
-  const deleteTask = (id) => {
+  // const deleteTask = (id) => {
 
-  }
+  // }
 
   return (
 
@@ -60,14 +65,10 @@ const App = () => {
       <nav className='navBar'>
         <ul className='navBarOptions'>
 
-          <li>Home</li>
-          <li>Characters</li>
+          <li><a href='/'>Home</a></li>
+          <li><a href='/character'>Characters</a></li>
           <p>end of navbar</p>
-          {/* <p>{chars}</p> */}
 
-          {/* <p>{chars.map(e => (
-            <li key={e._id}>{e.color}</li>
-          ))}</p> */}
 
 
 
@@ -84,12 +85,13 @@ const App = () => {
           <Switch>
             {/* how to pass props to react router components */}
             <Route exact path='/' component={Homepage} />
-            <Route exact path='/characters'
+            <Route exact path='/character'
               render={() => <Characters chars={chars} />}
             />
+            <Route exact path='/character/new' component={NewCharacter} />
+
             <Route exact path='/character/:characterId'
               component={Character} />
-
           </Switch>
         </div>
       </Router>
