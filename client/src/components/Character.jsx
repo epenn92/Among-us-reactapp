@@ -30,7 +30,7 @@ const Character = () => {
                 {char.name}
             </h1>
             <li>
-                {char.color} is <b>{char.impostor === true ? 'an impostor' : 'not an impostor'}</b>
+                {char.color} is <b>{char.impostor === 'Impostor' ? 'an impostor' : 'not an impostor'}</b>
             </li>
 
         </div>

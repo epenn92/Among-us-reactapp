@@ -1,30 +1,61 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 
+const Characters = ( { chars, setChars, setRequestData} ) => {
 
+    // const fetchData = async () => {
+    //     try {
+    //     const res = await axios.get(`/api/v1/character/${params.characterId}`);
+    //     console.log(res)
+    //     setChar(res.data)
+    //     }
+    //     catch (err) {
+    //     console.log('error', err)
+    //     }
+    // };
+    const deleteCharacter = ( e ) => {
+        try {
+            axios.delete(`/api/v1/character/${e._id}`)
+            .then(() => {
+            //     setRequestData(new Date())
+                const res = axios.get('/api/v1/character')
+                setChars([{...res.data}])
+            })
 
-const Characters = ( { chars } ) => {
+        }
+        catch (err) {
+            console.log('error', err)
+        }
+    }
 
     return (
         <div>
             <header>
+                {console.log(chars)}
+                {console.log(setChars)}
+            {setChars.redirect === true ? <Redirect to={`/character`}/> : null }
                 <h1>Our Characters</h1>
                 <ol>{chars.map(e => (
-                    <Link to={`/character/${e._id}`} key={e._id}>
+                    <div key={e._id}>
+                    <Link to={`/character/${e._id}`} >
                         <h3>
                     {e.name}
                     </h3></Link>
+                    <Link to={`/character/edit/${e._id}`}>
+                    <button>Edit Character</button>
+                    </Link>
+                    <button onClick={() => {
+                        deleteCharacter(e)
+                    }}>Delete Character</button>
+                    </div>
                 ))}</ol>
-
-
-                
-
-                
-            
             </header>
             <Link to={'/character/new'}><button>Add new Character</button></Link>
+            
             
         </div>
     )

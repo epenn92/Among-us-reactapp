@@ -4,10 +4,7 @@ const CharacterSchema = new mongoose.Schema({
     name: String,
     color: String,
     image: String,
-    impostor: {
-        type: Boolean,
-        default: false
-    },
+    impostor: String,
 })
 
 const CharacterCollection = mongoose.model('Character', CharacterSchema)
