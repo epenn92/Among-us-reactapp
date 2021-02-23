@@ -17,6 +17,7 @@ const NewCharacter = ( { chars, setChars } ) => {
                 // setNewChar([...chars])
                 const res = axios.get('/api/v1/character')
                 // setNewChar([{...res.data}])
+                console.log(res)
                 setChars([{...res.data}])
                 setNewChar({ redirect: true})
             })

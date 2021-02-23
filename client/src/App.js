@@ -101,7 +101,7 @@ const App = () => {
             <Route exact path='/character/:characterId'
               component={Character} />
             <Route exact path='/character/edit/:characterId'
-              component={UpdateCharacter} />
+              render={() => <UpdateCharacter chars={chars} setChars={setChars} />} />
           </Switch>
         </div>
       </Router>
