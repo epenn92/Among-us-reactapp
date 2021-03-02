@@ -72,39 +72,77 @@ const App = () => {
       <nav className='navBar'>
         <ul className='navBarOptions'>
 
-          <li><a href='/'>Home</a></li>
-          <li><a href='/character'>Characters</a></li>
-          <p>end of navbar</p>
-
-
+          <li><a href='/'><div class="container">
+            <div class="red flame"></div>
+            <div class="orange flame"></div>
+            <div class="yellow flame"></div>
+            <div class="white flame"></div>
+            <div class="blue circle"></div>
+            <div class="black circle"></div>
+          </div><i class="fas fa-space-shuttle fa-3x">  Home</i></a></li>
+          <li><a href='/character'><div class="container">
+            <div class="red flame"></div>
+            <div class="orange flame"></div>
+            <div class="yellow flame"></div>
+            <div class="white flame"></div>
+            <div class="blue circle"></div>
+            <div class="black circle"></div>
+          </div><i class="fas fa-space-shuttle fa-3x">  Characters</i></a></li>
+          <li><a href='/character'><div class="container">
+            <div class="red flame"></div>
+            <div class="orange flame"></div>
+            <div class="yellow flame"></div>
+            <div class="white flame"></div>
+            <div class="blue circle"></div>
+            <div class="black circle"></div>
+          </div><i class="fas fa-space-shuttle fa-3x">  About Us</i></a></li>
 
 
         </ul>
       </nav>
 
-      <div className='footer'>
-        <nav>
 
-        </nav>
+
+
+      <div className='pageContainer'>
+
+        <Router>
+          <div className="Routes">
+            <Switch>
+              {/* how to pass props to react router components */}
+              <Route exact path='/' component={Homepage} />
+              <Route exact path='/character'
+                render={() => <Characters chars={chars} setChars={setChars} setRequestData={setRequestData} />}
+              />
+              <Route exact path='/character/new'
+                render={() => <NewCharacter chars={chars} setChars={setChars} />} />
+
+              <Route exact path='/character/:characterId'
+                component={Character} />
+              <Route exact path='/character/edit/:characterId'
+                render={() => <UpdateCharacter chars={chars} setChars={setChars} />} />
+            </Switch>
+          </div>
+        </Router>
       </div>
-      <Router>
-        <div className="Routes">
-          <Switch>
-            {/* how to pass props to react router components */}
-            <Route exact path='/' component={Homepage} />
-            <Route exact path='/character'
-              render={() => <Characters chars={chars} setChars={setChars} setRequestData={setRequestData} />}
-            />
-            <Route exact path='/character/new'
-              render={() => <NewCharacter chars={chars} setChars={setChars} />} />
 
-            <Route exact path='/character/:characterId'
-              component={Character} />
-            <Route exact path='/character/edit/:characterId'
-              render={() => <UpdateCharacter chars={chars} setChars={setChars} />} />
-          </Switch>
+      <footer id='footer'>
+        <div className="footerSpace">
+          <nav>
+            <ul className="footerOptions">
+              <li><p className="thanks">Thanks for visiting</p></li>
+              <li className="socialMedia">
+                <button className="icon"><a href="https://twitter.com/AmongUsGame" className="fa fa-twitter"></a></button>
+                <button className="icon"><a href="https://www.facebook.com/amongusgames" className="fa fa-facebook"></a></button>
+                <button className="icon"><a href="https://www.linkedin.com/company/innersloth" className="fa fa-linkedin"></a></button>
+                <button className="icon"><a href="https://github.com/topics/among-us" className="fa fa-github"></a></button>
+                <button className="icon"><a href="https://github.com/epenn92/Among-us-reactapp" className="fa fa-rss"></a></button>
+              </li>
+              <li><p className="followUs">Follow the AmongUs Team</p></li>
+            </ul>
+          </nav>
         </div>
-      </Router>
+      </footer>
     </div>
   )
 }
