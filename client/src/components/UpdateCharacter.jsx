@@ -13,7 +13,7 @@ const UpdateCharacter = ( { chars, setChars} ) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-            const res = await axios.get(`/api/v1/character/${params.characterId}`,);
+            const res = await axios.get(`https://www.epenn92reactapp.space:8080/api/v1/character/${params.characterId}`,);
             console.log(res)
             setNewChar(res.data)
             }
@@ -26,7 +26,7 @@ const UpdateCharacter = ( { chars, setChars} ) => {
 
 const onSubmitUpdateCharacter = (e) =>  {
     e.preventDefault()
-    axios.put(`/api/v1/character/edit/${newChar._id}`, newChar)
+    axios.put(`https://www.epenn92reactapp.space:8080/api/v1/character/edit/${newChar._id}`, newChar)
         .then(() => {
             const res = axios.get('/api/v1/character')
             console.log(res)

@@ -11,6 +11,7 @@
 const express = require('express');
 const app = express()
 require('dotenv').config()
+const cors = require('cors')
 
 
 /* Step 2
@@ -31,6 +32,8 @@ app.use((req, res, next) => {
     next();
     res.setHeader('Content-Type', 'application/json')
 });
+
+app.use(cors())
 
 /* Step 3.a
  * ...to parse the body of the HTTP requests from a URL encoded string 
