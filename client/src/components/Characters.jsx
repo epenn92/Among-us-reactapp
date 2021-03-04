@@ -5,7 +5,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
 
-const Characters = ( { chars, setChars, setRequestData} ) => {
+const Characters = ( {chars, setChars}  ) => {
 
     // const fetchData = async () => {
     //     try {
@@ -36,7 +36,7 @@ const Characters = ( { chars, setChars, setRequestData} ) => {
         <div>
             <header>
                 {console.log(chars)}
-                {console.log(setChars)}
+                {/* {console.log(setChars)} */}
             {setChars.redirect === true ? <Redirect to={`/character`}/> : null }
                 <h1>Our Characters</h1>
                 <ol>{chars.map(e => (

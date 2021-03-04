@@ -7,15 +7,15 @@ import { Redirect } from 'react-router-dom'
 const NewCharacter = ( { chars, setChars } ) => {
     
     // const [newChar, setNewChar] = useState([ { name:'', color:'', impostor: false}])
-    const [newChar, setNewChar] = useState([ chars])
+    const [newChar, setNewChar] = useState([ ])
 
     const onSubmitCreateCharacter = (e) =>  {
         e.preventDefault()
-        axios.post('/api/v1/character/new', newChar)
+        axios.post('http://localhost:8080/api/v1/character/new', newChar)
             .then(() => {
-                console.log(setChars)
+                // console.log(setChar  s)
                 // setNewChar([...chars])
-                const res = axios.get('/api/v1/character')
+                const res = axios.get('http://localhost:8080/api/v1/character')
                 // setNewChar([{...res.data}])
                 console.log(res)
                 setChars([{...res.data}])

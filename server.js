@@ -12,6 +12,7 @@ const express = require('express');
 const app = express()
 require('dotenv').config()
 
+
 /* Step 2
  * 
  * import routers from controllers/
@@ -28,18 +29,21 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
+    res.setHeader('Content-Type', 'application/json')
 });
 
 /* Step 3.a
  * ...to parse the body of the HTTP requests from a URL encoded string 
  */
 app.use(express.urlencoded({ extended: true }))
+// express.urlencoded([options])
 
 /* Step 3.b 
  *
  * ...to parse the body of the HTTP requests from a JSON string  
  */
 app.use(express.json())
+
 
 
 /* Step 3.c
@@ -59,13 +63,31 @@ app.use('/api/v1/character', characterRouter)
 
 
 /* Step 5
- *
- * add catch all route to serve up the built react app for any request not made to our
- * /api/... routes.
- */
-app.get('/*', (req, res) => {
-    res.sendFile(`${__dirname}/client/build/index.html`)
-})
+*
+* add catch all route to serve up the built react app for any request not made to our
+* /api/... routes.
+*/
+var prdEnv = process.env.NODE_ENV === 'production'
+if (prdEnv) {
+    app.get('/*', async (ctx, next) => {
+        //judge if it request a normal file,if not ,return the index.html
+        if (parseMime(ctx.url) === 'unknown') {
+            ctx.type = 'text/html'
+            ctx.response.body = fs.readFileSync(path.join(__dirname, '../build/index.html'), 'binary')
+        } else {
+            ctx.type = parseMime(ctx.url)
+            ctx.response.body = fs.readFileSync(path.join(__dirname, '../build/', ctx.url))
+        }
+    })
+}
+
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static("client/build"));
+// }
+// app.get('/*', (req, res) => {
+//     res.sendFile(`${__dirname}/client/build/index.html`)
+// })
+
 
 /* Step 6
  *
@@ -73,7 +95,7 @@ app.get('/*', (req, res) => {
  *
  * NOTE: keep these lines at the bottom of the file 
  */
-const PORT = process.env.PORT || 3002
+const PORT = process.env.PORT || 8080
 
 /* Step 7
  *

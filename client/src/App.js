@@ -13,13 +13,13 @@ import UpdateCharacter from './components/UpdateCharacter.jsx'
 const App = () => {
 
   const [chars, setChars] = useState([]);
-  const [requestData, setRequestData] = useState(new Date())
+  // const [requestData, setRequestData] = useState(new Date())
 
   useEffect(() => {
 
     const fetchData = async () => {
       try {
-        const res = await axios.get('api/v1/character', {
+        let res = await axios.get('http://localhost:8080/api/v1/character', {
         });
         setChars(res.data)
       }
@@ -72,30 +72,30 @@ const App = () => {
       <nav className='navBar'>
         <ul className='navBarOptions'>
 
-          <li><a href='/'><div class="container">
-            <div class="red flame"></div>
-            <div class="orange flame"></div>
-            <div class="yellow flame"></div>
-            <div class="white flame"></div>
-            <div class="blue circle"></div>
-            <div class="black circle"></div>
-          </div><i class="fas fa-space-shuttle fa-3x">  Home</i></a></li>
-          <li><a href='/character'><div class="container">
-            <div class="red flame"></div>
-            <div class="orange flame"></div>
-            <div class="yellow flame"></div>
-            <div class="white flame"></div>
-            <div class="blue circle"></div>
-            <div class="black circle"></div>
-          </div><i class="fas fa-space-shuttle fa-3x">  Characters</i></a></li>
-          <li><a href='/character'><div class="container">
-            <div class="red flame"></div>
-            <div class="orange flame"></div>
-            <div class="yellow flame"></div>
-            <div class="white flame"></div>
-            <div class="blue circle"></div>
-            <div class="black circle"></div>
-          </div><i class="fas fa-space-shuttle fa-3x">  About Us</i></a></li>
+          <li><a href='/'><div className="container">
+            <div className="red flame"></div>
+            <div className="orange flame"></div>
+            <div className="yellow flame"></div>
+            <div className="white flame"></div>
+            <div className="blue circle"></div>
+            <div className="black circle"></div>
+          </div><i className="fas fa-space-shuttle fa-3x">  Home</i></a></li>
+          <li><a href='/character'><div className="container">
+            <div className="red flame"></div>
+            <div className="orange flame"></div>
+            <div className="yellow flame"></div>
+            <div className="white flame"></div>
+            <div className="blue circle"></div>
+            <div className="black circle"></div>
+          </div><i className="fas fa-space-shuttle fa-3x">  Characters</i></a></li>
+          <li><a href='/character'><div className="container">
+            <div className="red flame"></div>
+            <div className="orange flame"></div>
+            <div className="yellow flame"></div>
+            <div className="white flame"></div>
+            <div className="blue circle"></div>
+            <div className="black circle"></div>
+          </div><i className="fas fa-space-shuttle fa-3x">  About Us</i></a></li>
 
 
         </ul>
@@ -112,7 +112,7 @@ const App = () => {
               {/* how to pass props to react router components */}
               <Route exact path='/' component={Homepage} />
               <Route exact path='/character'
-                render={() => <Characters chars={chars} setChars={setChars} setRequestData={setRequestData} />}
+                render={() => <Characters chars={chars} setChars={setChars} />}
               />
               <Route exact path='/character/new'
                 render={() => <NewCharacter chars={chars} setChars={setChars} />} />
