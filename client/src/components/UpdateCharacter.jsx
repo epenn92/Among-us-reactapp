@@ -28,7 +28,7 @@ const onSubmitUpdateCharacter = (e) =>  {
     e.preventDefault()
     axios.put(`https://www.epenn92reactapp.space:8080/api/v1/character/edit/${newChar._id}`, newChar)
         .then(() => {
-            const res = axios.get('/api/v1/character')
+            const res = axios.get('https://www.epenn92reactapp.space:8080/api/v1/character')
             console.log(res)
             setChars([{...res.data}])
             setNewChar({ redirect: true})
