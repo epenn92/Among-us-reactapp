@@ -11,11 +11,11 @@ const NewCharacter = ( { chars, setChars } ) => {
 
     const onSubmitCreateCharacter = (e) =>  {
         e.preventDefault()
-        axios.post('https://www.epenn92reactapp.space:8080/api/v1/character/new', newChar)
+        axios.post('http://localhost:8080/api/v1/character/new', newChar)
             .then(() => {
                 // console.log(setChar  s)
                 // setNewChar([...chars])
-                const res = axios.get('https://www.epenn92reactapp.space:8080/api/v1/character')
+                const res = axios.get('http://localhost:8080/api/v1/character')
                 // setNewChar([{...res.data}])
                 console.log(res)
                 setChars([{...res.data}])

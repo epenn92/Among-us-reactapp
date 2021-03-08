@@ -19,7 +19,7 @@ const App = () => {
 
     const fetchData = async () => {
       try {
-        let res = await axios.get('https://www.epenn92reactapp.space:8080/api/v1/character', {
+        let res = await axios.get('http://localhost:8080/api/v1/character', {
         });
         setChars(res.data)
       }

@@ -19,10 +19,10 @@ const Characters = ( {chars, setChars}  ) => {
     // };
     const deleteCharacter = ( e ) => {
         try {
-            axios.delete(`https://www.epenn92reactapp.space:8080/api/v1/character/${e._id}`)
+            axios.delete(`http://localhost:8080/api/v1/character/${e._id}`)
             .then(() => {
             //     setRequestData(new Date())
-                const res = axios.get('https://www.epenn92reactapp.space:8080/api/v1/character')
+                const res = axios.get('http://localhost:8080/api/v1/character')
                 setChars([{...res.data}])
             })
 
